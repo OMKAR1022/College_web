@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FullCalendar Example</title>
+    <script src="index.global.min.js"></script>
+    <!-- Add any necessary CSS links here -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/main.min.css" rel="stylesheet">
+</head>
+<body>
+  
+    
+    <!-- Start popup dialog box -->
+    <div class="modal fade" id="event_entry_modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Add New Event</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="event_name">Event name</label>
+                        <input type="text" name="event_name" id="event_name" class="form-control" placeholder="Enter your event name">
+                    </div>
+                    <div class="form-group">
+                        <label for="event_date">Start_date</label>
+                        <input type="date" name="event_date" id="event_date" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="event_date">End_Date</label>
+                        <input type="date" name="event_date" id="event_date" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="save_event()">Save Event</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End popup dialog box -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/main.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    {
+                        title: 'Event 1',
+                        start: '2023-09-10',
+                        color: 'blue'
+                    },
+                    {
+                        title: 'Event 2',
+                        start: '2023-09-15',
+                        color: 'red'
+                    },
+                    {
+                        title: 'Event 2',
+                        start: '2023-09-10',
+                        end: '2023-09-25',
+                        color: 'red'
+
+                    }
+                ],
+                dateClick: function(info) {
+                    var eventName = prompt("Enter the event name:");
+                    if (!eventName) return; // User canceled
+
+                    // Create an input field for start date using jQuery UI Datepicker
+                    var $startDateInput = $('<input type="text" id="start_date" placeholder="Choose Start Date">');
+                    $startDateInput.datepicker({
+                        dateFormat: "yy-mm-dd",
+                        minDate: info.date, // Set the minimum date to the clicked date
+                        onSelect: function (selectedDate) {
+                            // When the user selects a date, autofill the start date input
+                            $startDateInput.val(selectedDate);
+                        }
+                    });
+
+                    // Create an input field for end date using jQuery UI Datepicker
+                    var $endDateInput = $('<input type="text" id="end_date" placeholder="Choose End Date">');
+                    $endDateInput.datepicker({
+                        dateFormat: "yy-mm-dd",
+                        minDate: info.date // Set the minimum date to the clicked date
+                    });
+
+                    // Create a dialog with the input fields
+                    var dialogContent = $('<div></div>').append(
+                        '<label for="event_name">Event name</label><input type="text" id="event_name" value="' + eventName + '"><br>' +
+                        '<label for="start_date">Start date</label>').append($startDateInput).append(
+                        '<label for="end_date">End date</label>').append($endDateInput);
+
+                    var message = $('<div></div>').text(''); // Empty message div
+
+                    // Open the dialog box
+                    dialogContent.dialog({
+                        modal: true,
+                        title: 'Book Event',
+                        buttons: {
+                            'Book': function() {
+                                // Retrieve input values
+                                eventName = $('#event_name').val();
+                                var startDate = $startDateInput.val();
+                                var endDate = $endDateInput.val();
+
+                                // Display the entered event details
+                                if (eventName && startDate && endDate) {
+                                    message.text("Event Name: " + eventName + "\nStart Date: " + startDate + "\nEnd Date: " + endDate);
+                                } else {
+                                    message.text("Please provide all the required information.");
+                                }
+                            },
+                            'Cancel': function() {
+                                $(this).dialog('close');
+                            }
+                        },
+                        close: function() {
+                            $(this).dialog('destroy').remove();
+                        }
+                    }).append(message);
+                }
+            });
+            calendar.render();
+        });
+          
+        
+    </script>
+</body>
+</html>

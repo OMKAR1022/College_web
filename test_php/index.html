@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>User Registration</h2>
+        <form id="userForm" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="birthdate">Birth Date:</label>
+            <input type="date" id="birthdate" name="birthdate" required><br>
+
+            <button type="submit">Submit</button>
+        </form>
+        
+        <div id="messageContainer" style="color: green;"></div>
+        <div id="errorContainer" style="color: red;"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
