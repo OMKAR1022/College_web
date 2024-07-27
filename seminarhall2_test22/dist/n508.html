@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <script src="index.global.min.js"></script>
+    <!-- Add any necessary CSS links here -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/main.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Mooli&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
+
+ 
+    <nav class="navbar navbar-expand-lg navbar-light bg-white mx-lg-2 my-lg-2 shadow-sm sticky-top">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold fs-3 h-font" href="#">Hall Bookings</a>
+          <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active me-2" aria-current="page" href="#">Halls</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active me-2" href="#">Facelities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active me-2" href="#">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active me-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Manage
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Venu</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button type="button" class="btn btn-outline-dark me-lg-3 me-3 shadow-none" data-bs-toggle="modal">
+                        Sign Up
+                    </button>
+                    <button type="button" class="btn btn-outline-success shadow-none" data-bs-toggle="modal">
+                        Login
+                    </button>
+                </div>
+          </div>
+        </div>
+      </nav>
+            <style>
+                /* Style the Today button with a more specific selector */
+                div#calendar .fc-toolbar .fc-today-button {
+                    padding: 10px auto;
+                    margin: 20px auto; /* Add padding to the button */
+                    background-color: red; /* Change the background color */
+                    color: #fff; /* Change the text color */
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+        
+                /* Adjust the hover effect if needed */
+                div#calendar .fc-toolbar .fc-today-button:hover {
+                    background-color: #0056b3; /* Change the background color on hover */
+                  
+                }
+                #calendar-wrapper {
+                    padding-top: 100px;
+                    padding-left: 20px;
+                    padding-right: 20px; /* Adjust the padding as needed */
+                }
+                .fc-header-toolbar {
+                    background: linear-gradient(to bottom, #4ECDC4,#556270 );
+                    border-radius: 20px;
+                    padding: 20px;
+                    box-shadow: black 2px 2px 10px; /* Change to your preferred color */
+                }
+                #calendar {
+                    z-index: 20; /* Adjust the z-index value as needed */
+                }
+                .fc-header-toolbar .fc-toolbar-title {
+                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust shadow properties as needed */
+                }
+                *{
+                    font-family: 'Mooli', sans-serif;
+                }
+                .h-font{
+                    font-family: 'Merienda', cursive;
+                }
+                .custom-bg{
+                    background-color: chartreuse;
+                }
+                .custom-bg:hover{
+                    background-color: cornflowerblue;
+                }
+                @media screen and (max-width: 575px){
+                    .availibility-form{
+                        margin-top: 0px;
+                        padding: 0 35px;
+                    }
+                }
+                .btncolor
+                {
+                    width:315px;
+                    font-size:33px;
+                    background-color:#3C9;
+                    color:#FFF;
+                    border:none;
+                    position:relative;
+                    cursor:pointer;
+                }
+                .btncolor::after
+                {
+                    content:"";
+                    position:absolute;
+                    bottom:-5px;
+                    height:4px;
+                    width:100%;
+                    left:0;
+                    background-color:#000;
+                    transition:0.3s;
+                    border-radius:50px;
+                    transition-timing-function:ease-in-out;
+                    transform:scaleX(0);
+                }
+                .btncolor:hover::after
+                {
+                    transform:scaleX(1);
+                }
+            </style>
+</head>
+<body>
+    
+           
+    <div id="eventDialog" class="dialog">
+        <div class="dialog-content">
+            <span class="close-btn" id="closeDialogBtn">&times;</span>
+            <h2>Add New Event</h2>
+            <form>
+                <div class="form-group">
+                    <label for="event_name">Event Name</label>
+                    <input type="text" id="event_name" name="event_name" placeholder="Enter your event name">
+                </div>
+                <div class="form-group">
+                    <label for="start_date">Start Date</label>
+                    <input type="datetime-local" id="event_start_date" name="start_date">
+                </div>
+                 <div class="form-group">
+                    <label for="end_date">End Date Date</label>
+                    <input type="datetime-local" id="event_end_date" name="start_date">
+                </div>
+                <button type="button" id="saveEventBtn">Save Event</button>
+            </form>
+        </div>
+    </div>
+
+<!-- End custom dialog box -->
+<style>
+    body{
+        margin: 0px auto;
+        padding: 0px  ;
+    }
+    h1{
+       padding-left: 200px;
+        display:inline-block;
+        position:fixed;
+        justify-content:center;
+        align-items: center;
+        z-index: 20;
+    }
+
+    .dialog {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+    
+    .dialog-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background:whitesmoke;
+        padding: 50px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        max-width: 400px;
+    }
+    
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 24px;
+    }
+    
+    .form-group {
+        margin-bottom: 10px;
+    }
+    
+    label {
+        display: block;
+        font-weight: bold;
+    }
+    
+    input[type="text"],
+    input[type="date"],
+    button[type="button"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    button[type="button"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+    .navbar{
+        background: rgba(189, 156, 232, 0.3);
+        font-family: calibri;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        top: 0;
+        z-index: 20;
+        transition: 70ms;
+        position: fixed;
+        border-radius: 10px;
+        
+    }
+    
+    .navdiv{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+    }
+    li{
+        list-style: none;
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+       
+    }
+    li a{
+        color: black;
+        font-size: 18px;
+        font-weight: bold;
+        margin-right: 25px;
+    }
+    button{
+        background-color: black;
+        margin-left: 10px;
+        border-radius: 10px;
+        padding: 10px;
+        width: 100px;
+        margin-right: 20px;
+    }
+    button a{
+        color: white;
+        font-weight: bold;
+    }
+    ul{
+        padding: 0;
+        margin: 0;
+    }
+    .context-menu {
+        display: none;
+        position: absolute;
+        background: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        z-index: 1000; /* Adjust as needed */
+    }
+    
+    .context-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .context-menu ul li {
+        margin-bottom: 5px;
+    }
+    
+    .context-menu a {
+        color: #333;
+        text-decoration: none;
+    }
+    
+    .context-menu a:hover {
+        text-decoration: underline;
+    }
+    
+    
+    
+</style>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="calendar-wrapper"> <!-- Wrap the calendar in a div with an ID -->
+                    <div id="calendar"></div>
+                </div>
+            </div>
+        </div>
+        <div id="eventContextMenu" class="context-menu">
+            <ul>
+                <li><a href="#" id="deleteEvent">Delete Event</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.0/main.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var calendarEl = document.getElementById("calendar");
+            const showDialogBtn = document.getElementById("showDialogBtn");
+            const eventDialog = document.getElementById("eventDialog");
+            const closeDialogBtn = document.getElementById("closeDialogBtn");
+            const saveEventBtn = document.getElementById("saveEventBtn");
+        
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                initialView: 'timeGridWeek',
+               
+                
+                headerToolbar: {
+                    left: 'prev,next',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay' // user can switch between the two
+                  },
+                
+                events: "fetch_n508.php", // Load events from your PHP script
+                dateClick: function (info) {
+                    // Show the custom dialog when clicking on a date
+                    eventDialog.style.display = "block";
+                },
+                eventClick: function (info) {
+                    // Show a confirmation dialog when clicking on an event
+                    var deleteConfirmed = confirm("Are you sure you want to delete this event?");
+                    if (deleteConfirmed) {
+                        // Send an AJAX request to delete the event from the server
+                        var xhr = new XMLHttpRequest();
+                        xhr.open("POST", "delete_event.php", true);
+                        xhr.setRequestHeader("Content-Type", "application/json");
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState === 4) {
+                                if (xhr.status === 200) {
+                                    alert("Event deleted successfully!"); // Display the success message
+                                    calendar.refetchEvents(); // Refresh the calendar to remove the event
+                                } else {
+                                    alert("Error: " + xhr.responseText); // Display the error message
+                                }
+                            }
+                        };
+                        var event = info.event; // Get the clicked event object
+                        var eventID = event.id;
+                        var eventData = {
+                            event_id: eventID
+                        };
+                        xhr.send(JSON.stringify(eventData));
+                    }
+                },
+                 eventClickDay: function(info) {
+                
+      alert("Day View Event Clicked: " );
+    }
+            });
+            calendar.render();
+        
+            document.getElementById("saveEventBtn").addEventListener("click", function () {
+                var eventName = document.getElementById("event_name").value;
+                var eventStartDate = document.getElementById("event_start_date").value;
+                var eventEndDate = document.getElementById("event_end_date").value;
+        
+                if (eventName && eventStartDate && eventEndDate) {
+                    var eventData = {
+                        event_name: eventName,
+                        event_start_date: eventStartDate,
+                        event_end_date: eventEndDate,
+                    };
+        
+                    // Send the event data to the server using AJAX
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "save_n508.php", true);
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4) {
+                            if (xhr.status === 200) {
+                                alert("Event saved successfully!"); // Display the success message
+                                eventDialog.style.display = "none";
+        
+                                // Fetch updated events from the server and add them to the calendar
+                                calendar.refetchEvents();
+                            } else {
+                                alert("Error: " + xhr.responseText); // Display the error message
+                            }
+                        }
+                    };
+                    xhr.send(JSON.stringify(eventData));
+                } else {
+                    alert("Please provide all the required information.");
+                }
+            });
+        
+            closeDialogBtn.addEventListener("click", () => {
+                eventDialog.style.display = "none";
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+        
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ['dayGrid', 'timeGrid', 'list'], // Include the required plugins
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                },
+                defaultView: 'dayGridMonth', // The default view when the calendar loads
+                // Additional configuration options...
+            });
+        
+            calendar.render();
+        });
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hall Bookings</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&family=Mooli&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        <script src=""></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <style>
+            *{
+                font-family: 'Mooli', sans-serif;
+            }
+            .h-font{
+                font-family: 'Merienda', cursive;
+            }
+            .custom-bg{
+                background-color: chartreuse;
+            }
+            .custom-bg:hover{
+                background-color: cornflowerblue;
+            }
+            @media screen and (max-width: 575px){
+                .availibility-form{
+                    margin-top: 0px;
+                    padding: 0 35px     ;
+                }
+            }
+            .btncolor
+            {
+                width:315px;
+                font-size:33px;
+                background-color:#3C9;
+                color:#FFF;
+                border:none;
+                position:relative;
+                cursor:pointer;
+            }
+            .btncolor::after
+            {
+                content:"";
+                position:absolute;
+                bottom:-5px;
+                height:4px;
+                width:100%;
+                left:0;
+                background-color:#000;
+                transition:0.3s;
+                border-radius:50px;
+                transition-timing-function:ease-in-out;
+                transform:scaleX(0);
+            }
+            .btncolor:hover::after
+            {
+                transform:scaleX(1);
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white mx-lg-2 my-lg-2 shadow-sm sticky-top">
+            <div class="container-fluid">
+              <a class="navbar-brand fw-bold fs-3 h-font" href="#">Hall Bookings</a>
+              <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active me-2" aria-current="page" href="#">Halls</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active me-2" href="#">Facelities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active me-2" href="#">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active me-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Manage
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Venu</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <button type="button" class="btn btn-outline-dark me-lg-3 me-3 shadow-none" data-bs-toggle="modal">
+                            Sign Up
+                        </button>
+                        <button type="button" class="btn btn-outline-success shadow-none" data-bs-toggle="modal">
+                            Login
+                        </button>
+                    </div>
+              </div>
+            </div>
+          </nav>
+          <div class="contaiber availiblity-form">
+            <div class="row mx-lg-5">
+                <div class="col-lg-12 bg-white shadow p-4 rounded">
+                    <h5>Check Availibility</h5>
+                    <form>
+                        <div class="row align-items-end">
+                            <div class="col-lg-4 mb-sm-3  mb-lg-0">
+                                <label class="form-label" style="font-weight: 500;">Date In</label>
+                                <input type="datetime-local" class="form-control shadow-none">
+                            </div>
+                            <div class="col-lg-4 mb-sm-3  mb-lg-0">
+                                <label class="form-label" style="font-weight: 500;">Date Out</label>
+                                <input type="datetime-local" class="form-control shadow-none">
+                            </div>
+                            <div class="col-lg-3 mb-sm-3  mb-lg-0">
+                                <label class="form-label" style="font-weight: 500;">Capacity</label>
+                                <input type="number" class="form-control shadow-none">
+                            </div>
+                            <div class="col-lg-1 mb-sm-3 mb-lg-0">
+                                <button type="submit" class="btn text-white shadow-none custom-bg">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+          </div>
+
+          <h2 class="mt-lg-4 mt-md-3 mt-sm-3 mb-lg-4 mb-md-3 mb-sm-3 text-center fw-bold h-font">Our Halls</h2>
+
+          <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 my-3 ">
+                    <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
+                        <a href="n508.html">
+                        <img src="images/hall1.jpeg" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                          <h5 class="card-title">Rk Auditoriam</h5>
+                          <h6 class="card-title mb-4">Capacity : 200</h6>
+                          <div class="features mb-3">
+                            <h6 class="mb-1 fw-bold">features</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Furnished Hall
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Audio Speakers 
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Chairs
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Maintainance Staff
+                            </span>
+                          </div>
+                          <div class="facelities mb-3">
+                            <h6 class="mb-1 fw-bold">facelities</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Wifi Availability
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Projectors 
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Audio Instruments
+                            </span>
+                          </div>
+                          <div class="d-flex">
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none me-lg-3 custom-bg">Book here</a>
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More Details</a>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-3 col-md-6 my-3 ">
+                    <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
+                        <img src="images/hall1.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Rk Auditoriam</h5>
+                          <h6 class="card-title mb-4">Capacity : 200</h6>
+                          <div class="features mb-3">
+                            <h6 class="mb-1 fw-bold">features</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Furnished Hall
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Audio Speakers 
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Chairs
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Maintainance Staff
+                            </span>
+                          </div>
+                          <div class="facelities mb-3">
+                            <h6 class="mb-1 fw-bold">facelities</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Wifi Availability
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Projectors 
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Audio Instruments
+                            </span>
+                          </div>
+                          <div class="d-flex">
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none me-lg-3 custom-bg">Book here</a>
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More Details</a>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-3 col-md-6 my-3 ">
+                    <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
+                        <img src="images/hall1.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Rk Auditoriam</h5>
+                          <h6 class="card-title mb-4">Capacity : 200</h6>
+                          <div class="features mb-3">
+                            <h6 class="mb-1 fw-bold">features</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Furnished Hall
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Audio Speakers 
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Chairs
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Maintainance Staff
+                            </span>
+                          </div>
+                          <div class="facelities mb-3">
+                            <h6 class="mb-1 fw-bold">facelities</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Wifi Availability
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Projectors 
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                Audio Instruments
+                            </span>
+                          </div>
+                          <div class="d-flex">
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none me-lg-3 custom-bg me-sm-2">Book here</a>
+                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">More Details</a>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-lg-3 col-md-6 my-2 mx-sm-6">
+                    <div class="border-0" style="max-width: 350px; margin: auto;">
+                        <button class="btncolor btn btn-sm btn-outline-dark shadow-none mx-lg-5 mx-md-5 custom-bg" style="justify-content: center;">
+                            Booking Status
+                        </button>
+                        <button class="btncolor btn btn-sm btn-outline-dark shadow-none mx-lg-5 mx-md-5 custom-bg" style="margin-top:20px; justify-content: center;">
+                            Booking Log
+                        </button>
+                        <button class="btncolor btn btn-sm btn-outline-dark shadow-none mx-lg-5 mx-md-5 custom-bg" style="margin-top:20px; justify-content: center;">
+                            Event Calander
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-12 text-center mt-5">
+                    <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">More Halls >>></a>
+                </div>
+            </div>
+          </div>
+    </body>
+</html>

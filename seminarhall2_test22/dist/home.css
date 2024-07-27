@@ -1,0 +1,233 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0 auto;
+    padding: 0 auto;
+}
+.navbar{
+    background: rgba(189, 156, 232, 0.3);
+    font-family: calibri;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    z-index: 22px;
+    transition: 70ms;
+    position: fixed;
+}
+.navdiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+li{
+    list-style: none;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+li a{
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 25px;
+}
+button{
+    background-color: black;
+    margin-left: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100px;
+    margin-right: 20px;
+}
+button a{
+    color: white;
+    font-weight: bold;
+}
+ul{
+    padding: 0;
+    margin: 0;
+}
+#section1{
+    width: 100%;
+    margin-top: 60px;
+    height: 1000px;
+    display: inline-block;
+    width: 100%;
+   background: white;
+ 
+}
+#section2{
+    height: 450px;
+    background: whitesmoke;
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: space-evenly;
+    
+ 
+}
+#section3{
+    height: 500px;
+    background: white;
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+ justify-content: space-evenly;
+    
+ 
+}
+.image_1{
+    margin-top: 20px;
+}
+.column{
+ 
+   margin-top: 40px;
+    float:left;
+    width: 33.33%;
+    padding: 15px;
+    flex: 30%;
+    box-sizing: border-box;
+}
+.row{
+    justify-content: space-between;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    content: "";
+    clear: both;
+    flex-wrap: wrap;
+}
+@media screen and (max-width: 500px) {
+    .column {
+      width: 100%;
+    }
+  }
+  h3{
+    z-index: 10;
+    display: inline-block;
+    margin-left: 50px;
+    margin-right: 40px; /* Adjust the margin as needed for spacing */
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .seminar_image{
+    
+    border-radius: 10px;
+    transition: box-shadow 0.25ms;
+  }
+  .seminar_image:hover{
+    cursor: pointer;
+    box-shadow: 2px 5px 2px #888888 ;
+  }
+  .aboutimg {
+    height: 350px;
+    width: 450px;
+    padding: 20px;
+    position:absolute;
+    border-radius: 50px;
+    left: 0; /* Position the image on the left side */
+    top: 155%; /* Adjust the vertical position as needed */
+    transform: translateY(-50%);
+    z-index: 999; /* Adjust the z-index to control the image's stacking order */
+}
+h2 {
+    margin-top: 150px;
+    margin-left: 550px;
+    margin-right: 70px;
+    display: flex;
+    font-size: 30px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide the overflowing text */
+    border-right: 3px solid transparent; /* Create a blinking cursor effect */
+    width: 0; /* Start with no text displayed */
+    animation: typing 5s steps(40) infinite, blink-caret 0.75s step-end infinite;
+    transition: 3ms;
+}
+
+/* Define the keyframes for the typing animation */
+@keyframes typing {
+    0% {
+        width: 0; /* Start with no text displayed */
+    }
+    100% {
+        width: 100%; /* Display the full text */
+    }
+}
+
+/* Define the keyframes for the blinking cursor */
+@keyframes blink-caret {
+    50% {
+        border-color: red; /* Make the cursor blink */
+    }
+}
+p{
+    font-size: 20px;
+    margin-left: 550px;
+    margin-right: 50px;
+}
+/* Apply basic styles to the form */
+form {
+    max-width: 400px;
+    margin: 20px;
+    padding: 50px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.container {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: flex-start; /* Align items to the top */
+    max-width: 100%; /* Adjust as needed */
+}
+/* Style labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Style input fields */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Style the submit button */
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Hover effect on the submit button */
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style for a success message (you can hide/show it dynamically) */
+.success-message {
+    color: #0a7d08;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Style for an error message (you can hide/show it dynamically) */
+.error-message {
+    color: #ff0000;
+    font-weight: bold;
+    margin-top: 10px;
+}

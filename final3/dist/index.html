@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+            <div class="container" id="container">
+                <div class="form-container sign-up-container">
+                    <form action="#">
+                        <img src="/Images/mit_logo.png" height="80px" width="100px" alt="ca">
+                        <h1>Staff login</h1>
+                        <input type="email" placeholder="Email" />
+                        <input type="password" placeholder="Password" />
+                        <a href="#">Forgot your password?</a>
+                        <a href="home.html">
+                        <button>Sign In </button></a>
+                    </form>
+                </div>
+                <div class="form-container sign-in-container">
+                    <form action="#">
+                        <img src="/Images/mit_logo.png" height="80px" width="100px" alt="ca">
+                        <h1>Admin login</h1>
+                       
+                    
+                        <input type="email" placeholder="Email" />
+                        <input type="password" placeholder="Password" />
+                        <button id="navigateButton" type="button">Sign In</button>
+                        <script>
+                            // Get a reference to the button element
+                            const navigateButton = document.getElementById("navigateButton");
+                    
+                            // Add a click event listener to the button
+                            navigateButton.addEventListener("click", function() {
+                                // Navigate to the desired page by setting the window.location.href
+                                window.location.href = "home.html";
+                            });
+                        </script>
+                    </form>
+                </div>
+                <div class="overlay-container">
+                    <div class="overlay">
+                        <div class="overlay-panel overlay-left">
+                            <h1>Welcome Back!</h1>
+                            <p>To keep connected with us please login with your personal info</p>
+                            <button class="ghost" id="signIn">Sign In</button>
+                        </div>
+                        <div class="overlay-panel overlay-right">
+                            <h1>Staff Login </h1>
+                            <p>Hassel free booking at your fingertips</p>
+                            <button class="ghost" id="signUp">Staff login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <p>
+                  
+                </p>
+            </footer>
+
+            <script>
+                const signUpButton = document.getElementById('signUp');
+                const signInButton = document.getElementById('signIn');
+                const container = document.getElementById('container');
+
+                signUpButton.addEventListener('click', () => {
+                    container.classList.add("right-panel-active");
+                });
+
+                signInButton.addEventListener('click', () => {
+                    container.classList.remove("right-panel-active");
+                });
+                function myFunction() {
+                    window.location.href = 'http://127.0.0.1:5500/home.html';
+                  }
+            </script>
+    </body>
+</html>
+
+

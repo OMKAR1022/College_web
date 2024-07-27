@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Seminar Hall Booking</title>
+</head>
+<body>
+    <h1>Seminar Hall Booking</h1>
+    <form id="bookingForm">
+        <label for="programName">Program Name:</label>
+        <input type="text" id="programName" name="programName" required><br>
+
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" required><br>
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" required><br>
+
+        <label for="capacity">Capacity:</label>
+        <input type="number" id="capacity" name="capacity" required><br>
+
+        <button type="submit">Find Available Seminar Halls</button>
+    </form>
+
+    <div id="availableHalls">
+        <!-- Seminar halls will be displayed here -->
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const bookingForm = document.getElementById("bookingForm");
+            const availableHalls = document.getElementById("availableHalls");
+
+            bookingForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                // Get user input values
+                const programName = document.getElementById("programName").value;
+                const startDate = document.getElementById("startDate").value;
+                const endDate = document.getElementById("endDate").value;
+                const capacity = document.getElementById("capacity").value;
+
+                // AJAX request to query available seminar halls
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "find_available_halls.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        availableHalls.innerHTML = xhr.responseText;
+                    }
+                };
+
+                const data = `programName=${programName}&startDate=${startDate}&endDate=${endDate}&capacity=${capacity}`;
+                xhr.send(data);
+            });
+        });
+    </script>
+</body>
+</html>
